@@ -1,0 +1,7 @@
+
+######## WATCHDOG ########
+
+It checks whether inputs occurrs from the other processes by receiving a SIGTSTP signal every time the user sends inputs from either the command and the inspection console. In case of no computation, no motion, no input/output for 60 seconds this process sends the SIGUSR1 and SIGUSR2 signals to motors in order to reset the system. 
+This process also prints information on the LogFile.
+
+

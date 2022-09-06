@@ -1,0 +1,12 @@
+
+######## MOTOR X ########
+
+The motor_x program aims to reproduce the behavior of a real linear motor with constant speed.
+
+It receives commands from the command console through named pipes and signals from the inspection console, changing its behavior depending on the input received. The select system call is used for managing pipes inputs; if no command arrives, it redoes the previous instruction.
+
+The program has two boolean variables: one for controlling the stop and the other for the reset state. When the stop signal arrives, the motor stops until a new command is received; instead, the reset signal makes the robot move backward until it reaches its minimum position.
+
+Lastly, it sends via named pipes its estimate position to the inspection console, adding a random error to simulate a more realistic behavior, printing its real position on the log file.
+
+

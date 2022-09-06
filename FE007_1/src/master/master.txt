@@ -1,0 +1,21 @@
+
+######## MASTER PROCESS ########
+							
+Master process executes all the processes. Through the the fork() system call five child processes were created. Each of them uses execvp() in order to execute all the needed processes for the hoist movement managing. The processes that the master's children executes are: 
+
+1) command console;
+2) inspection console;
+3) motor_x;
+4) motor_z;
+5) WatchDog.
+
+**ERROR CHECKING**
+
+The "CHECK()" function was implemented for checking every function return value. This function is useful because it keeps the code ligher and cleaner and therefore more understandable. This function returns a message in case of an error occurrs, moreover it indicates the origin (file and line) and the reason of the error.
+
+**PIPES AND ERRORS MANAGEMENT**
+
+It manages also the creation and the removal of every named pipe used for the inter-processes communication and prints some information on the LogFile (such as the termination value that is useful for checking whether the termination was due to an error or not).
+Moreover, this process checks the first terminated process return value: if any of the processes returns 0, then it kills all the processes in execution exept for the command konsole. This is because the command konsole is the only one that can terminate with status 0 (by using a specified "quit" command). In such case the CHECK function would generate an error because the master process would try to kill a process that has already terminated. On the other hand if any of the processes returns a non zero value then all of them are killed by the master process by using a SIGKILL signal.
+
+

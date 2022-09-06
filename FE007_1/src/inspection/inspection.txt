@@ -1,0 +1,24 @@
+
+######## INSPECTION CONSOLE ########
+
+The inspection console has the objective of displaying the x-z position of the hoist and managing the stop and reset commands.
+
+Thanks to the ncurses library, the Graphic User Interface prints the real-time position of the hoist in a 2D environment, the x-z Cartesian coordinates, and the execution time. Every time the user changes the console size, it resizes automatically.
+
+**INPUT MANAGING**
+
+The program can receive two different kinds of input: keyboard commands and pipes data messages; the select() system call manage all inputs.
+Motor x and motor y send their estimated position to the inspection console through named pipes, to update the hoist position.
+In addition, there are two allowed keyboard commands:
+
+1) 's' button --> Stop the motors.
+2) 'r' button --> Reset the motors in their starting position.
+
+When the User press one of these two buttons, the program immediately sends a signal to the command console and the motors.
+
+**RESETTING**
+
+The reset command drives the motors to their initial position, by disabling all inputs from the command console other than the quit and the help ones. The reset routine ends when both motors have the estimated position less than or equal to 0.001, then both motors are stopped.
+The stop button has precedence on resetting routine, so when it's pushed, the motors immediately stop, commands are available again, and the hoist waits for new instructions.
+
+

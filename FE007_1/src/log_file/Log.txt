@@ -1,0 +1,7 @@
+Tue Sep  6 20:29:28: Master    : Log file created by master process.
+Tue Sep  6 20:29:28: Master    : Created all processes.
+Tue Sep  6 20:29:28: motor_h   : Motor h started.
+Tue Sep  6 20:29:28: motor_v   : Motor v started.
+Tue Sep  6 20:29:28: wd        : Watchdog started.
+Tue Sep  6 20:29:28: command   : Command console started
+Tue Sep  6 20:30:29: wd        : Reset for time ellapsing.

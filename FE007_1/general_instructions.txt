@@ -1,0 +1,12 @@
+
+#### GENERAL INSTRUCTIONS ####
+
+All the files you installed have been saved in the "src" folder. Here you can find eight folders:
+1) "command" folder: it contains the command console's source code;
+2) "inspection" folder: it contains the inspection console's source code;
+3) "master" folder: it contains the master's source code;
+4) "motor_x" folder: it contains the motor_x's source code;
+5) "motor_z" folder: it contains the motor_z's source code;
+6) "watchdog" folder: it contains the watchdog's source code;
+7) "log_file" folder: it contains the log file;
+8) "executables" folder: it contains every executable of each process. Here the master process is executed bu the run.sh bash script.

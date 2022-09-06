@@ -1,0 +1,32 @@
+
+######## COMMAND CONSOLE ########
+
+This is the console that receives user's inputs from the keyboard. 
+
+Some functions were implemented in order to: manage every kind of input from the keyboard with getchar() function, manage some signals, print some timing information on the LogFile, print messages on the console and create a new console set up that avoids the use of the "Enter" button.
+
+**INPUT MANAGING**
+
+When programs are launched, it will appear a legend of the allowed key button. In particular, there are six allowed commands dedicated to the hoist movement that are:
+
+1) Upwards arrow	--> Move the hoist upwards;						FLAG=1
+2) Downwards arrow-	--> Move the hoist downwards;						FLAG=2
+3) Right arrow		--> Move the hoist to the right;					FLAG=3
+4) Left arrow		--> Move the hoist to the left;					FLAG=4
+5) 'z' button		--> Stop the hoist movement on the downwards/upwards direction.	FLAG=5
+6) 'x' button		--> Stop the hoist movement on the left/right direction;		FLAG=6
+
+There are also:
+7) the 'h' key that, when pressed, makes the console prints an "help message" containing a legend of the allowed commands and
+8) the 'q' key that, when pressed, makes the function returns 0. By this way all processes will be killed by the master process!
+
+When any of these key is pressed a confirmation message is printed on the console (such as: "Increase X" if right arrow is pressed). In case of the user type a command that is not allowed the console prints a message that suggests the user to press the 'h' button.
+At every of the six command dedicated to the hoist movement it is associated a specified flag. Actually flags are integer values, each one represent one of the six command above and when any of these key is pressed, the corresponding flag is sent to motors through named pipes.
+All the keyboard inputs were received and managed as ASCII's table integer values. One thing that we think it should be pointed out is the fact that the ASCII's table integer number for arrows is a combination of three different values so, in order to correctly receive the input, we had to call the getchar() funtion three times. 
+
+**SIGNALS HANDLING**
+
+Actually there are two main status: the one in which the system is resetting and the one in which the system is not resetting. In the first of the two status the process will not accept any inputs exept for the 'STOP' one (managed by the inspection console), otherwise inputs are managed.
+The signal handling was implemented in order to let the process know whether the system is resetting or not. In particular SIGUSR1 and SIGUSR2 were handled.
+
+
